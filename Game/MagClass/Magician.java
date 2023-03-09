@@ -14,7 +14,7 @@ public class Magician extends MagClass {
 
     @Override
     public void step() {
-        throw new UnsupportedOperationException("Unimplemented method 'step'");
+        System.out.println("Магическая атака!");
     }
 
     @Override

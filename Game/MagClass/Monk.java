@@ -13,7 +13,7 @@ public class Monk extends MagClass {
 
     @Override
     public void step() {
-        throw new UnsupportedOperationException("Unimplemented method 'step'");
+        System.out.println("Удар волшебным посохом!");
     }
 
     @Override

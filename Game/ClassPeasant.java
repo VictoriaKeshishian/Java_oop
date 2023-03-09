@@ -15,7 +15,7 @@ public class ClassPeasant extends BaseHero {
 
     @Override
     public void step() {
-        throw new UnsupportedOperationException("Unimplemented method 'step'");
+        System.out.println("Очередь Крестьянина!");
     }
 
     @Override

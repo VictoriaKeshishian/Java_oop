@@ -14,7 +14,7 @@ public class Crossbowman extends ShooterClass {
 
     @Override
     public void step() {
-        throw new UnsupportedOperationException("Unimplemented method 'step'");
+        System.out.println("Выстрел арбалетчика!");
     }
 
     @Override

@@ -3,11 +3,11 @@ package Game;
 
 import Game.InfantryClass.*;
 import Game.MagClass.*;
-import Game.ShooterClass.*;
+//import Game.ShooterClass.*;
 
 import java.util.ArrayList;
 import java.util.Random;
-import Game.Interface;
+//import Game.Interface;
 
 
 public class Programm {

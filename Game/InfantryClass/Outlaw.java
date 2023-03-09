@@ -12,7 +12,7 @@ public class Outlaw extends InfantryClass {
 
     @Override
     public void step() {
-        throw new UnsupportedOperationException("Unimplemented method 'step'");
+        System.out.println("Разбойник атакует!");
     }
 
     @Override

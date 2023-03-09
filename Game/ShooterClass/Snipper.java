@@ -14,7 +14,7 @@ public class Snipper extends ShooterClass {
 
     @Override
     public void step() {
-        throw new UnsupportedOperationException("Unimplemented method 'step'");
+        System.out.println("Выстрел снайпера!");
     }
 
     @Override
