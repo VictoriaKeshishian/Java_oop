@@ -8,8 +8,18 @@ package Game.MagClass;
 
 public class Magician extends MagClass {
 
-    public Magician() {
-        super("Колдун", 80, 80, 6, 200, 14);
+    public Magician(String name) {
+        super(name, 80, 80, 6, 200, 14);
+    }
+
+    @Override
+    public void step() {
+        throw new UnsupportedOperationException("Unimplemented method 'step'");
+    }
+
+    @Override
+    public String getInfo() {
+        return "Magician";
     }
 
     

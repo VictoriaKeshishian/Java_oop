@@ -6,7 +6,7 @@ import Game.BaseHero;
  * Это класс пехота
  */
 
-public class InfantryClass extends BaseHero {
+public abstract class InfantryClass extends BaseHero {
 
     protected int energy;
     protected int power;
@@ -17,4 +17,5 @@ public class InfantryClass extends BaseHero {
         this.power = power;
 
     }    
+    
 }

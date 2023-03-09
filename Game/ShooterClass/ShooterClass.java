@@ -6,7 +6,7 @@ import Game.BaseHero;
  * Это класс стрелков
  */
 
-public class ShooterClass extends BaseHero {
+public abstract class ShooterClass extends BaseHero {
    
     /**
      * энергия

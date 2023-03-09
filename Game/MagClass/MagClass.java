@@ -6,7 +6,7 @@ import Game.BaseHero;
  * Это класс магов
  */
 
-public class MagClass extends BaseHero {
+public abstract class MagClass extends BaseHero {
 
     protected int mana;
     protected int intellect;

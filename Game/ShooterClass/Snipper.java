@@ -8,8 +8,18 @@ package Game.ShooterClass;
 
 public class Snipper extends ShooterClass {
 
-    public Snipper() {
-        super("Снайпер", 80,80,10,75,8);
+    public Snipper(String name) {
+        super(name, 80,80,10,75,8);
+    }
+
+    @Override
+    public void step() {
+        throw new UnsupportedOperationException("Unimplemented method 'step'");
+    }
+
+    @Override
+    public String getInfo() {
+        return "Snipper";
     }
 
 }
