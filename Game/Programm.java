@@ -1,11 +1,16 @@
 package Game;
 
 
-import Game.InfantryClass.*;
+import Game.InfantryClass.Outlaw;
+import Game.InfantryClass.Spearman;
+//import Game.InfantryClass.*;
 import Game.MagClass.*;
 //import Game.ShooterClass.*;
+import Game.ShooterClass.Crossbowman;
+import Game.ShooterClass.Snipper;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Random;
 //import Game.Interface;
 
@@ -13,43 +18,63 @@ import java.util.Random;
 public class Programm {
     public static void main(String[] args) {
         
-        ArrayList<BaseHero> team1 = new ArrayList<>();
-        ArrayList<BaseHero> team2 = new ArrayList<>();
+        ArrayList<BaseHero> enemies = new ArrayList<>();
+        ArrayList<BaseHero> friends = new ArrayList<>();
+        ArrayList<BaseHero> result = new ArrayList<>();
 
             for (int i = 0; i < 10; i++) {
-                switch(new Random().nextInt(3)){
+                switch(new Random().nextInt(4)){
                     case 0:
-                        team1.add(new Outlaw(getName()));
+                     enemies.add(new ClassPeasant(getName()));
                         break;
                     case 1:
-                        team1.add(new Spearman(getName()));
+                     enemies.add(new Snipper(getName()));
                         break;
                     default:
-                        team1.add(new Magician(getName()));
+                     enemies.add(new Outlaw(getName()));
                         break;
                 }
-                switch(new Random().nextInt(3)){
+                switch(new Random().nextInt(4)){
                     case 0:
-                        team2.add(new Outlaw(getName()));
+                        friends.add(new ClassPeasant(getName()));
                         break;
                     case 1:
-                        team2.add(new Spearman(getName()));
+                        friends.add(new Spearman(getName()));
+                        break;
+                    case 2:
+                        friends.add(new Monk(getName()));
                         break;
                     default:
-                        team2.add(new Magician(getName()));
+                        friends.add(new Crossbowman(getName()));
                         break;
                 }
             }
+            result.addAll (enemies);
+            result.addAll(friends);
+            result.sort(new Comparator<BaseHero>() {
+                @Override
+                public int compare (BaseHero b1, BaseHero b2){
+                    if(b1.getSpeed() == b2.getSpeed())
+                    return 0;
+                    else if(b1.getSpeed() > b2.getSpeed())
+                    return 1;
+                    else return -1;
+                }
+            });
 
-            for (BaseHero hero : team1) {
-                System.out.println("Команда 1 " + hero.getInfo());
+            System.out.println("Команда врага");
+            for (BaseHero hero : enemies) {
+                System.out.print(" - " + hero.getInfo() + " - ");
                 hero.getNAME();
             }
 
-            for (BaseHero hero : team2) {
-                System.out.println("Команда 2 " + hero.getInfo());
+            System.out.println("Команда союзника");
+            for (BaseHero hero : friends) {
+                System.out.print(" - " + hero.getInfo() + " - ");
                 hero.getNAME();
             }
+
+            enemies.forEach(u -> u.step(enemies, friends));
 
         }
 

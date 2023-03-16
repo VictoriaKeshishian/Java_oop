@@ -9,12 +9,7 @@ package Game.ShooterClass;
 public class Snipper extends ShooterClass {
 
     public Snipper(String name) {
-        super(name, 80,80,10,75,8);
-    }
-
-    @Override
-    public void step() {
-        System.out.println("Выстрел снайпера!");
+        super(name,15,15,9,10,8,10,10);
     }
 
     @Override

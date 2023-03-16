@@ -9,12 +9,7 @@ package Game.ShooterClass;
 public class Crossbowman extends ShooterClass {
 
     public Crossbowman(String name) {
-        super(name, 90, 90, 11, 120, 12);
-    }
-
-    @Override
-    public void step() {
-        System.out.println("Выстрел арбалетчика!");
+        super(name,10, 10,4, 10,2,3, 3);
     }
 
     @Override
