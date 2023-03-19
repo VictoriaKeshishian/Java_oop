@@ -9,8 +9,15 @@ public class Positions {
         this.y = y;
     }
 
-    private double distance(int newX, int newY){
-        return Math.sqrt(Math.pow(this.x - newX, 2)+ Math.pow(this.y - newY, 2));
+    public boolean isEquals(Positions opposit){
+        if(opposit.y == y && opposit.x == x) return true;
+        return false;
+    }
+
+    public double getPosition(BaseHero unit){
+        float dx = x - this.x;
+        float dy = y - this.y;
+        return Math.sqrt(Math.sqrt(dx * dx + dy * dy));
     };
 
 

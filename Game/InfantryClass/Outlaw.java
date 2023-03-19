@@ -6,18 +6,15 @@ package Game.InfantryClass;
 
 public class Outlaw extends InfantryClass {
 
-    public Outlaw(String name) {
-        super(name,10, 10,6,4,3);
+    public Outlaw(String name, int x, int y) {
+        super(name,10,6,4,3, x,y);
     }
-
 
     @Override
-    public String getInfo() {
-        return "Outlaw";
+    public String getName() {
+        return "Snipper";
     }
 
-    
-    
 }
 
 

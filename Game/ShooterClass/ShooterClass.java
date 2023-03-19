@@ -14,26 +14,27 @@ public abstract class ShooterClass extends BaseHero {
 
   
 
-    public ShooterClass(String name, int hp, int maxHp, int speed,int arrows,int damage,int maxDamage,int protection) {
-        super(name, hp, maxHp, speed, damage, protection, maxDamage, protection);
+    public ShooterClass(String name, int hp,int speed,int arrows,int damage,int maxDamage,int protection,int x, int y) {
+        super(name, hp, speed, maxDamage, protection, x, y);
         this.arrows = arrows;
     }
 
     @Override
     public void step(ArrayList<BaseHero> enemies, ArrayList<BaseHero> friends){
         if (this.arrows > 0 && this.hp > 0) {
-            System.out.println("Могу стрелять!");
-            for (BaseHero hero : enemies) {
-                if (hero.hp > 0) {
-                    this.attack(hero, this.damage, this.maxDamage);
-                    this.arrows --;
-                    break;
-                }else
-                 System.out.println("Пропускаю шаг");
-            }
-        }
 
-        System.out.println("Осталось стрел:" + String.valueOf(this.arrows));
+            BaseHero target = enemies.get(0);
+            double minDistance = this.position.getPosition(enemies.get(0));
+
+            for (BaseHero hero : enemies) {
+                if (this.position.getPosition(hero) < minDistance) {
+                    minDistance = this.position.getPosition(hero);
+                    target = hero;
+                }
+            }
+            this.attack(target, this.damage, this.maxDamage);
+            this.arrows--;
+        }
     
         for (BaseHero hero : friends) {
             if (hero.getInfo().equals("ClassPeasant")) {
@@ -41,6 +42,10 @@ public abstract class ShooterClass extends BaseHero {
                 break;
             }   
         }
-        System.out.println("Осталось стрел:" + String.valueOf(this.arrows));   
-}
+
+        }
+        @Override
+        public String toString() {
+            return "Осталось стрел: " + String.valueOf(this.arrows);
+    }
 }

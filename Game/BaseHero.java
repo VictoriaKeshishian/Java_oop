@@ -17,7 +17,7 @@ public abstract class BaseHero implements Interface {
     private int speed;
     private final String NAME;
     public int damage; //урон
-    private Positions position;
+    public Positions position;
     private int protection; //защита
 
 
@@ -25,10 +25,10 @@ public abstract class BaseHero implements Interface {
         System.out.println(NAME);
     }
 
-    public BaseHero(String name, int hp, int maxHp, int speed, int damage,int protection, int x,int y) {
+    public BaseHero(String name, int hp, int speed, int damage,int protection, int x,int y) {
         NAME = name;
         this.hp = hp;
-        this.maxHp = maxHp;
+        this.maxHp = hp;
         this.speed = speed;
         this.damage = damage;
         this.protection = protection;
@@ -56,33 +56,32 @@ public abstract class BaseHero implements Interface {
                     break;
         }
         }
-
-        System.out.printf("%s Атака %s\t", this.getClass().getSimpleName(), target.getClass().getSimpleName());
-        System.out.printf("Сила атаки = %d\n", causedDamage);
-        System.out.printf("%s hp= %d\n", target.getClass().getSimpleName(), target.hp);
         target.getDamage(causedDamage);
     }
 
     @Override
     public void step(ArrayList<BaseHero> team1, ArrayList<BaseHero> team2){
-        System.out.println("Ход");
     };
 
     @Override
     public String getInfo(){
-        return "";
+        String outStr = String.format("\t%-3s\t⚔️ %-3d\t\uD83D\uDEE1 %-3d\t♥️%-3d%%\t☠️%-3d\t        " , 0,0 , protection,(int) hp * 100/maxHp, damage);
+        return outStr;
     }
 
     public int getSpeed() {
         return this.speed;
     }
 
-    // public int getMaxHp() {
-    //     return maxHp;
-    // };
+    public Positions getPosition() {
+        return position;
+    }
 
-    // public int getProtection() {
-    //     return protection;
-    // }
+    public static String generateName(){
+        return Names.values()[new Random().nextInt(Names.values().length)].toString();
+    }
 
+    public String getName() {
+        return "base";
+    }
 }

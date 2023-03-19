@@ -13,44 +13,62 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Random;
 //import Game.Interface;
+import java.util.Scanner;
 
 
 public class Programm {
+
+    public static final int GANG_SIZE = 10;
+    public static ArrayList<BaseHero> whiteSide = new ArrayList<>();
+    public static ArrayList<BaseHero> darkSide = new ArrayList<>();
     public static void main(String[] args) {
         
-        ArrayList<BaseHero> enemies = new ArrayList<>();
-        ArrayList<BaseHero> friends = new ArrayList<>();
-        ArrayList<BaseHero> result = new ArrayList<>();
+        Scanner sc = new Scanner(System.in);
+        Init();
 
-            for (int i = 0; i < 10; i++) {
+        while(true){
+            step();
+            ConsoleView.view();
+            sc.nextLine();
+        }
+
+    }
+    
+    public static void Init() {
+
+            for (int i = 1; i < GANG_SIZE + 1; i++) {
                 switch(new Random().nextInt(4)){
                     case 0:
-                     enemies.add(new ClassPeasant(getName()));
+                     darkSide.add(new ClassPeasant(BaseHero.generateName(), 10, i));
                         break;
                     case 1:
-                     enemies.add(new Snipper(getName()));
+                     darkSide.add(new Snipper(BaseHero.generateName(), 10, i));
                         break;
                     default:
-                     enemies.add(new Outlaw(getName()));
+                     darkSide.add(new Outlaw(BaseHero.generateName(), 10, i));
                         break;
                 }
                 switch(new Random().nextInt(4)){
                     case 0:
-                        friends.add(new ClassPeasant(getName()));
+                        whiteSide.add(new ClassPeasant(BaseHero.generateName(), 1, i));
                         break;
                     case 1:
-                        friends.add(new Spearman(getName()));
+                        whiteSide.add(new Spearman(BaseHero.generateName(), 1, i));
                         break;
                     case 2:
-                        friends.add(new Monk(getName()));
+                        whiteSide.add(new Monk(BaseHero.generateName(), 1, i));
                         break;
                     default:
-                        friends.add(new Crossbowman(getName()));
+                    whiteSide.add(new Crossbowman(BaseHero.generateName(), 1, i));
                         break;
                 }
             }
-            result.addAll (enemies);
-            result.addAll(friends);
+    }
+            
+    public static void step() {
+        ArrayList<BaseHero> result = new ArrayList<>();
+            result.addAll  (darkSide);
+            result.addAll(whiteSide);
             result.sort(new Comparator<BaseHero>() {
                 @Override
                 public int compare (BaseHero b1, BaseHero b2){
@@ -62,24 +80,13 @@ public class Programm {
                 }
             });
 
-            System.out.println("Команда врага");
-            for (BaseHero hero : enemies) {
-                System.out.print(" - " + hero.getInfo() + " - ");
-                hero.getNAME();
+            for(BaseHero unit : result){
+                if(darkSide.contains(unit)){
+                    unit.step(whiteSide, darkSide);
+                } else
+                    unit.step(darkSide, whiteSide);
             }
 
-            System.out.println("Команда союзника");
-            for (BaseHero hero : friends) {
-                System.out.print(" - " + hero.getInfo() + " - ");
-                hero.getNAME();
-            }
-
-            enemies.forEach(u -> u.step(enemies, friends));
-
-        }
-
-        private static String getName(){
-            return Names.values()[new Random().nextInt(Names.values().length)].toString();
         }
 
 }
