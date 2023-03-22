@@ -17,13 +17,12 @@ public class ClassPeasant extends BaseHero {
 
     @Override
     public void step(ArrayList<BaseHero> team1, ArrayList<BaseHero> team2) {
-        // System.out.println("Очередь Крестьянина!");
+        
     }
 
     @Override
-    public String getInfo() {
+    public String getName() {
         return "Paesant";
     }
   
-
 }
