@@ -15,7 +15,7 @@ public class Magician extends MagClass {
 
     @Override
     public String getName() {
-        return "Magician";
+        return "Колдун";
     }
     
 }

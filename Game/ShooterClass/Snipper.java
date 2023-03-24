@@ -14,6 +14,6 @@ public class Snipper extends ShooterClass {
 
     @Override
     public String getName() {
-        return "Snipper";
+        return "Снайпер";
     }
 }

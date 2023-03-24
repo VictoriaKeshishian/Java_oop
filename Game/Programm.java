@@ -36,27 +36,30 @@ public class Programm {
             for (int i = 1; i < GANG_SIZE + 1; i++) {
                 switch(new Random().nextInt(4)){
                     case 0:
-                        whiteSide.add(new ClassPeasant(BaseHero.generateName(), 10, i));
+                        whiteSide.add(new ClassPeasant(BaseHero.generateName(), 1, i));
                         break;
                     case 1:
-                        whiteSide.add(new Spearman(BaseHero.generateName(), 10, i));
+                        whiteSide.add(new Spearman(BaseHero.generateName(), 1, i));
                         break;
                     case 2:
-                        whiteSide.add(new Monk(BaseHero.generateName(), 10, i));
+                        whiteSide.add(new Monk(BaseHero.generateName(), 1, i));
                         break;
                     default:
-                        whiteSide.add(new Crossbowman(BaseHero.generateName(), 10, i));
+                        whiteSide.add(new Crossbowman(BaseHero.generateName(), 1, i));
                         break;
                 }
                 switch(new Random().nextInt(4)){
                     case 0:
-                        darkSide.add(new ClassPeasant(BaseHero.generateName(), 1, i));
+                        darkSide.add(new ClassPeasant(BaseHero.generateName(), 10, i));
                         break;
                     case 1:
-                        darkSide.add(new Snipper(BaseHero.generateName(), 1, i));
+                        darkSide.add(new Snipper(BaseHero.generateName(), 10, i));
+                        break;
+                    case 2:
+                        darkSide.add(new Magician(BaseHero.generateName(), 10, i));
                         break;
                     default:
-                        darkSide.add(new Outlaw(BaseHero.generateName(), 1, i));
+                        darkSide.add(new Outlaw(BaseHero.generateName(), 10, i));
                         break;
                 }
             }
@@ -79,7 +82,7 @@ public class Programm {
 
             for(BaseHero unit : result){
                 if(darkSide.contains(unit)){
-                    unit.step(whiteSide, darkSide);
+                    unit.step(whiteSide,darkSide);
                 } else
                     unit.step(darkSide, whiteSide);
             }
@@ -87,3 +90,12 @@ public class Programm {
         }
 
 }
+
+
+
+// for(BaseHero unit : result){
+//     if(darkSide.contains(unit)){
+//         unit.step(whiteSide, darkSide);
+//     } else
+//         unit.step(darkSide, whiteSide);
+// }

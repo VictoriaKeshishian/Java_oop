@@ -16,6 +16,6 @@ public class Crossbowman extends ShooterClass {
     
     @Override
     public String getName() {
-        return "Crossbowman";
+        return "Арбалетчик";
     }
 }

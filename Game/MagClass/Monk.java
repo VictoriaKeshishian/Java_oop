@@ -14,7 +14,7 @@ public class Monk extends MagClass {
 
     @Override
     public String getName() {
-        return "Monk";
+        return "Монах";
     }
     
 }
