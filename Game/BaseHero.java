@@ -14,7 +14,7 @@ public abstract class BaseHero implements Interface {
 
     //private String name;
     public int hp;
-    private int maxHp;
+    public int maxHp;
     private int speed;
     private final String NAME;
     public int damage; //урон
